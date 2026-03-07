@@ -66,13 +66,12 @@ width:100%;
 /* HOME */
 
 .home{
-display:flex;
-justify-content:center;
-align-items:center;
-height:80vh;
-gap:50px;
-flex-wrap:wrap;
-text-align:center;
+display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
 }
 
 .profile img{
@@ -87,9 +86,14 @@ transition:0.4s;
 transform:scale(1.1);
 }
 
-.intro h1{
-font-size:40px;
+.intro p{
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 20px;
 }
+
 
 /* ACTIVITIES */
 
@@ -188,11 +192,10 @@ transform:scale(1.05);
 
 <div class="intro">
 <h1> Student Portfolio</h1>
-<p>Hello! I am a CS student at Cavite State University.
-I enjoy learning about coding, especially HTML, CSS, and Java.
-I created this portfolio to showcase my quizzes, exams, and school activities.
-I am passionateabout improving my programming skills and hope to become a successful developer
-in the future.</p>
+<p> Hello! I am a CS student at Cavite State University.
+I enjoy learning about coding, especially HTML, CSS, and Java. I created this portfolio to showcase my quizzes, exams, and school activities.
+I am passionate about improving my programming skills and hope to become a successful developer
+in the future. </p>
 </div>
 
 </section>
@@ -262,7 +265,3 @@ in the future.</p>
 </div>
 
 </section>
-  
-
-</body>
-</html>
