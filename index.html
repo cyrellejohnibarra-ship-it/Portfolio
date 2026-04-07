@@ -14,8 +14,6 @@ background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 color:white;
 }
 
-/* NAVBAR */
-
 nav{
 display:flex;
 justify-content:space-between;
@@ -63,15 +61,13 @@ nav ul li a:hover::after{
 width:100%;
 }
 
-/* HOME */
-
 .home{
-display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+height:100vh;
 }
 
 .profile img{
@@ -80,6 +76,8 @@ height:200px;
 border-radius:50%;
 border:5px solid #00eaff;
 transition:0.4s;
+object-fit:cover;
+object-position:center;
 }
 
 .profile img:hover{
@@ -87,15 +85,12 @@ transform:scale(1.1);
 }
 
 .intro p{
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-    line-height: 1.6;
-    font-size: 20px;
+max-width:700px;
+margin:0 auto;
+text-align:center;
+line-height:1.6;
+font-size:20px;
 }
-
-
-/* ACTIVITIES */
 
 .activities{
 padding:60px;
@@ -115,7 +110,7 @@ padding:30px;
 border-radius:15px;
 width:250px;
 transition:0.4s;
-backdrop-filter: blur(8px);
+backdrop-filter:blur(8px);
 }
 
 .card:hover{
@@ -123,11 +118,15 @@ transform:translateY(-10px);
 background:rgba(255,255,255,0.15);
 }
 
-.upload{
+button{
 margin-top:10px;
+padding:8px 15px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:#00eaff;
+font-weight:bold;
 }
-
-/* INFO */
 
 .info{
 padding:60px;
@@ -160,17 +159,43 @@ background:white;
 transform:scale(1.05);
 }
 
+#viewer{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+z-index:999;
+justify-content:center;
+align-items:center;
+}
+
+#viewer img{
+width:100%;
+height:100%;
+object-fit:contain;
+}
+
+.close{
+position:absolute;
+top:20px;
+right:30px;
+font-size:30px;
+cursor:pointer;
+color:white;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
 
 <div class="logo">
-<img src="ceejaych/cvsu-logo.png">
+<img src="cvsu-logo.png">
 <span>CvSU Portfolio</span>
 </div>
 
@@ -182,25 +207,23 @@ transform:scale(1.05);
 
 </nav>
 
-<!-- HOME -->
-
 <section class="home" id="home">
 
 <div class="profile">
-<img src="pfp" alt="Your Photo">
+<img src="52447cf8-6fb5-4677-9de0-727862811063.jpg" alt="Your Photo">
 </div>
 
 <div class="intro">
-<h1> Student Portfolio</h1>
-<p> Hello! I am a CS student at Cavite State University.
-I enjoy learning about coding, especially HTML, CSS, and Java. I created this portfolio to showcase my quizzes, exams, and school activities.
-I am passionate about improving my programming skills and hope to become a successful developer
-in the future. </p>
+<h1>Student Portfolio</h1>
+<p>
+Hello! I am a CS student at Cavite State University.
+I enjoy learning about coding, especially HTML, CSS, and Java. 
+I created this portfolio to showcase my quizzes, exams, and school activities.
+I am passionate about improving my programming skills and hope to become a successful developer in the future.
+</p>
 </div>
 
 </section>
-
-<!-- ACTIVITIES -->
 
 <section class="activities" id="activities">
 
@@ -210,27 +233,33 @@ in the future. </p>
 
 <div class="card">
 <h3>Quizzes</h3>
-<p>Upload your quiz files here</p>
-<input class="upload" type="file">
+<p>View your quizzes</p>
+
+<button onclick="openViewer('f9c1ab2e-a559-4ae1-89cb-c917db98897b.jpg')">Quiz 1</button>
+<button onclick="openViewer('c190d281-f93a-49f0-b61b-23bf249e8080.jpg')">Quiz 2</button>
+<button onclick="openViewer('5814692f-1d50-48f4-9dfe-3fb9f3eda2ed.jpg')">Quiz 3</button>
+
 </div>
 
 <div class="card">
 <h3>Exams</h3>
-<p>Upload your exam files here</p>
-<input class="upload" type="file">
+<p>View your exams</p>
+
+<button onclick="openViewer('image/exam1.jpg')">Exam 1</button>
+
 </div>
 
 <div class="card">
 <h3>Activities</h3>
-<p>Upload your activities here</p>
-<input class="upload" type="file">
+<p>View your activity</p>
+
+<button onclick="openViewer('ef871c65-c84f-4028-a1ce-68e56837293a.jpg')">Activity 1</button>
+
 </div>
 
 </div>
 
 </section>
-
-<!-- INFO -->
 
 <section class="info" id="info">
 
@@ -257,7 +286,6 @@ in the future. </p>
 <div class="social">
 
 <a href="https://www.facebook.com/ceejay.delusional">Facebook</a>
-
 <a href="https://www.instagram.com/cy.runliftrepeat">Instagram</a>
 
 </div>
@@ -265,3 +293,24 @@ in the future. </p>
 </div>
 
 </section>
+
+<div id="viewer">
+<span class="close" onclick="closeViewer()">&times;</span>
+<img id="viewerImg">
+</div>
+
+<script>
+
+function openViewer(src){
+document.getElementById("viewer").style.display="flex";
+document.getElementById("viewerImg").src=src;
+}
+
+function closeViewer(){
+document.getElementById("viewer").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
