@@ -228,6 +228,8 @@ I am passionate about improving my programming skills and hope to become a succe
 
 <footer>© 2026 Ceejay Ibarra</footer>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
 let lineChart;
 
@@ -267,32 +269,63 @@ document.getElementById("labForm").addEventListener("submit",function(e){e.preve
 document.getElementById("examForm").addEventListener("submit",function(e){e.preventDefault();saveRecord("Exam",this);});
 
 function updateDashboard(){
-  let data=JSON.parse(localStorage.getItem("records"))||[];
-  let container=document.getElementById("imageContainer");
-  container.innerHTML="";
-  let labels=[],scores=[];
-  data.forEach((item,index)=>{
+  let data = JSON.parse(localStorage.getItem("records")) || [];
+  let container = document.getElementById("imageContainer");
+  container.innerHTML = "";
+  let labels = [], scores = [];
+
+  let firstActivitySkipped = false;
+
+  data.forEach((item, index) => {
     if(item.image){
-      let box=document.createElement("div");
-      let img=document.createElement("img");
-      img.src=item.image;
-      let label=document.createElement("p");
-      label.innerText=item.title;
-      label.style.textAlign="center";
-      let btn=document.createElement("button");
-      btn.innerText="Delete";
-      btn.onclick=()=>{deleteItem(index);}
+      let box = document.createElement("div");
+      let img = document.createElement("img");
+      img.src = item.image;
+      img.onclick = () => openViewer(item.image);
+      let label = document.createElement("p");
+      label.innerText = item.title;
+      label.style.textAlign = "center";
+
+      let btn = document.createElement("button");
+      btn.innerText = "Delete";
+      btn.onclick = () => deleteItem(index);
+
       box.appendChild(img);
       box.appendChild(label);
       box.appendChild(btn);
       container.appendChild(box);
     }
-    labels.push(item.title);
-    scores.push(item.total?Math.round((item.score/item.total)*100):0);
+
+    if(item.type === "Activity" && !firstActivitySkipped){
+      firstActivitySkipped = true;
+      return;
+    }
+
+    if(item.score !== undefined && item.total !== undefined && item.total > 0){
+      labels.push(item.title);
+      scores.push(Math.round((item.score / item.total) * 100));
+    }
   });
+
+  const ctx = document.getElementById("lineChart").getContext("2d");
   if(lineChart) lineChart.destroy();
-  let ctx=document.getElementById("lineChart").getContext("2d");
-  lineChart=new Chart(ctx,{type:"line",data:{labels,scores,datasets:[{label:"Scores %",data:scores,fill:false,borderColor:"#10b981",tension:0.2}]},options:{scales:{y:{beginAtZero:true,max:100}}}});
+  lineChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "Scores (%)",
+        data: scores,
+        borderColor: "#10b981",
+        backgroundColor: "rgba(16,185,129,0.2)",
+        fill: true,
+        tension: 0.2,
+        pointRadius: 6,
+        pointBackgroundColor: "#059669"
+      }]
+    },
+    options: { scales: { y: { beginAtZero:true, max:100 } } }
+  });
 }
 
 function deleteItem(index){
