@@ -3,313 +3,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Portfolio</title>
+<title>Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
 
+/* BLUE THEME */
 body{
-margin:0;
-font-family:'Segoe UI',sans-serif;
-background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-color:white;
+background: linear-gradient(135deg,#0f172a 0%,#1e3a8a 40%,#3b82f6 70%,#dbeafe 100%);
+min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:40px 20px;
 }
 
-nav{
+nav{width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;}
+nav h2{color:white;}
+nav ul{list-style:none; display:flex; gap:25px;}
+nav ul li{color:white; cursor:pointer;}
+
+.page{display:none;}
+.active{display:block;}
+
+.top-section{width:100%; max-width:1200px; text-align:center; margin-bottom:20px;}
+.top-section h1{color:white; font-size:48px; margin-bottom:20px;}
+.top-section span{font-weight:300;}
+
+.tags{display:flex; justify-content:center; flex-wrap:wrap; gap:15px;}
+.tag{background:white; color:#1e3a8a; padding:8px 18px; border-radius:25px; font-size:14px;}
+
+.card{
+width:100%; max-width:1200px;
+background:white;
+padding:80px 35px 35px 35px;
+border-radius:25px;
+box-shadow:0 25px 50px rgba(0,0,0,0.2);
+position:relative;
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-top:200px;
+}
+
+.profile-pic{
+width:180px; height:180px; border-radius:50%; object-fit:cover;
+position:absolute; top:-90px; border:6px solid white;
+}
+
+.info{margin-bottom:12px; color:#1e3a8a;}
+.info span{font-weight:600;}
+
+.about{
+margin-top:30px;
+background:#dbeafe;
+padding:20px;
+border-radius:15px;
+text-align:center;
+width:90%;
+color:#1e3a8a;
+}
+
+.section{
+background:white;
+padding:35px;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+margin-bottom:35px;
+width:100%; max-width:1200px;
+}
+
+.section h2{color:#1e3a8a; margin-bottom:20px;}
+
+.item{
+background:#eff6ff;
+padding:15px 20px;
+border-radius:20px;
+margin-bottom:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 40px;
-background:rgba(0,0,0,0.3);
-backdrop-filter: blur(10px);
 }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.logo img{
-width:40px;
-}
-
-nav ul{
-list-style:none;
-display:flex;
-gap:30px;
-}
-
-nav ul li a{
-text-decoration:none;
+.score{
+background:#3b82f6;
 color:white;
-font-weight:bold;
-position:relative;
-}
-
-nav ul li a::after{
-content:'';
-width:0%;
-height:2px;
-background:#00eaff;
-position:absolute;
-left:0;
-bottom:-5px;
-transition:0.3s;
-}
-
-nav ul li a:hover::after{
-width:100%;
-}
-
-.home{
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-height:100vh;
-}
-
-.profile img{
-width:200px;
-height:200px;
-border-radius:50%;
-border:5px solid #00eaff;
-transition:0.4s;
-object-fit:cover;
-object-position:center;
-}
-
-.profile img:hover{
-transform:scale(1.1);
-}
-
-.intro p{
-max-width:700px;
-margin:0 auto;
-text-align:center;
-line-height:1.6;
-font-size:20px;
-}
-
-.activities{
-padding:60px;
-text-align:center;
-}
-
-.card-container{
-display:flex;
-justify-content:center;
-gap:30px;
-flex-wrap:wrap;
-}
-
-.card{
-background:rgba(255,255,255,0.08);
-padding:30px;
-border-radius:15px;
-width:250px;
-transition:0.4s;
-backdrop-filter:blur(8px);
-}
-
-.card:hover{
-transform:translateY(-10px);
-background:rgba(255,255,255,0.15);
-}
-
-button{
-margin-top:10px;
-padding:8px 15px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-background:#00eaff;
-font-weight:bold;
-}
-
-.info{
-padding:60px;
-text-align:center;
-}
-
-.info-box{
-background:rgba(255,255,255,0.08);
-padding:30px;
-border-radius:15px;
-width:60%;
-margin:auto;
-line-height:1.8;
-}
-
-.social a{
-display:inline-block;
-margin:10px;
-padding:10px 20px;
+padding:6px 15px;
 border-radius:20px;
-background:#00eaff;
-color:black;
-text-decoration:none;
-font-weight:bold;
-transition:0.3s;
+cursor:pointer;
 }
 
-.social a:hover{
-background:white;
-transform:scale(1.05);
-}
-
-#viewer{
+.viewer{
 display:none;
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-z-index:999;
+top:0; left:0;
+width:100%; height:100%;
+background:rgba(0,0,0,0.9);
 justify-content:center;
 align-items:center;
+flex-direction:column;
+z-index:1000;
 }
 
-#viewer img{
-width:100%;
-height:100%;
-object-fit:contain;
-}
+.viewer img{max-width:90%; max-height:80%; border-radius:10px;}
+.close{color:white; font-size:30px; position:absolute; top:20px; right:30px; cursor:pointer;}
 
-.close{
-position:absolute;
-top:20px;
-right:30px;
-font-size:30px;
-cursor:pointer;
+button{
+background:#3b82f6;
 color:white;
+padding:10px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 
+form{display:flex; flex-direction:column; gap:10px;}
+
+input{
+padding:10px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+#imageContainer img{width:150px; border-radius:10px;}
+
+footer{text-align:center; color:white; margin-top:40px;}
 </style>
 </head>
 
 <body>
 
-<nav>
-
-<div class="logo">
+  <div class="logo">
 <img src='ceejaych/cvsu-logo.png'>
 <span>CvSU Portfolio</span>
 </div>
 
-<ul>
-<li><a href="#home">HOME</a></li>
-<li><a href="#activities">ACTIVITIES</a></li>
-<li><a href="#info">INFO</a></li>
-</ul>
-
+<nav>
+  <h2>Portfolio</h2>
+  <ul>
+    <li onclick="showPage('home')">Home</li>
+    <li onclick="showPage('dashboard')">Dashboard</li>
+    <li onclick="showPage('uploadMenu')">Upload</li>
+  </ul>
 </nav>
 
-<section class="home" id="home">
-
-<div class="profile">
-<img src='ceejaych/52447cf8-6fb5-4677-9de0-727862811063.jpg' alt="Your Photo">
-</div>
-
-<div class="intro">
-<h1>Student Portfolio</h1>
-<p>
-Hello! I am a CS student at Cavite State University.
+<div id="home" class="page active">
+  <div class="top-section">
+    <h1>student <span>portfolio</span></h1>
+    <div class="tags">
+      <div class="tag">Problem Solving</div>
+      <div class="tag">Communication</div>
+      <div class="tag">Basic Web Development</div>
+      <div class="tag">HTML</div>
+      <div class="tag">CSS</div>
+      <div class="tag">Java Programming</div>
+    </div>
+  </div>
+  <div class="card">
+    <img src="image/IMG_7487[1].jpg" class="profile-pic">
+    <h1> Mr. Pogi </h1>
+    <div class="info"><span>Name:</span> Cyrell John E. Ibarra</div>
+    <div class="info"><span>Student No:</span> 251100463</div>
+    <div class="info"><span>Course & Section:</span> BSCS-1D</div>
+    <div class="about">
+     Hello! I am a CS student at Cavite State University.
 I enjoy learning about coding, especially HTML, CSS, and Java. 
 I created this portfolio to showcase my quizzes, exams, and school activities.
 I am passionate about improving my programming skills and hope to become a successful developer in the future.
-</p>
+    </div>
+  </div>
 </div>
 
-</section>
-
-<section class="activities" id="activities">
-
-<h1>Activities</h1>
-
-<div class="card-container">
-
-<div class="card">
-<h3>Quizzes</h3>
-<p>View your quizzes</p>
-
-<button onclick="openViewer('ceejaych/f9c1ab2e-a559-4ae1-89cb-c917db98897b.jpg')">Quiz 1</button>
-<button onclick="openViewer('ceejaych/c190d281-f93a-49f0-b61b-23bf249e8080.jpg')">Quiz 2</button>
-<button onclick="openViewer('ceejaych/5814692f-1d50-48f4-9dfe-3fb9f3eda2ed.jpg')">Quiz 3</button>
-
+<div id="dashboard" class="page">
+  <div class="section">
+    <h2>Dashboard</h2>
+    <canvas id="scoreChart" style="width:100%;max-width:900px;height:400px;"></canvas>
+  </div>
+  <div class="section">
+    <h2>Uploaded Proof</h2>
+    <div id="imageContainer" style="display:flex; flex-wrap:wrap; gap:15px;"></div>
+  </div>
 </div>
 
-<div class="card">
-<h3>Exams</h3>
-<p>View your exams</p>
-
-<button onclick="openViewer('image/exam1.jpg')">Exam 1</button>
-
+<div id="uploadMenu" class="page">
+  <div class="section">
+    <h2>Upload</h2>
+    <button onclick="showPage('quizPage')">Quiz Upload</button><br><br>
+    <button onclick="showPage('labPage')">Lab Work Upload</button><br><br>
+    <button onclick="showPage('examPage')">Major Exam Upload</button>
+  </div>
 </div>
 
-<div class="card">
-<h3>Activities</h3>
-<p>View your activity</p>
-
-<button onclick="openViewer('ceejaych/ef871c65-c84f-4028-a1ce-68e56837293a.jpg')">Activity 1</button>
-
-
+<div id="quizPage" class="page">
+  <div class="section">
+    <h2>Quiz Upload</h2>
+    <form id="quizForm">
+      <input type="text" placeholder="Quiz Title" required>
+      <input type="file" required>
+      <input type="file" accept="image/*" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </div>
 
+<div id="labPage" class="page">
+  <div class="section">
+    <h2>Lab Work Upload</h2>
+    <form id="labForm">
+      <input type="text" placeholder="Title / Description" required>
+      <input type="file" required>
+      <input type="file" accept="image/*" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </div>
 
-</section>
-
-<section class="info" id="info">
-
-<h1>About Me</h1>
-
-<div class="info-box">
-
-<p><strong>Name:</strong> Cyrell John E. Ibarra</p>
-<p><strong>Student Number:</strong> 251100463</p>
-<p><strong>Course and Section:</strong> BSCS-1D</p>
-
-<br>
-
-<p><strong>Skills:</strong></p>
-<p>• HTML</p>
-<p>• CSS</p>
-<p>• Java Programming</p>
-<p>• Basic Web Development</p>
-
-<br>
-
-<p><strong>Email:</strong> cyrellejohn.ibarra@cvsu.edu.ph</p>
-
-<div class="social">
-
-<a href="https://www.facebook.com/ceejay.delusional">Facebook</a>
-<a href="https://www.instagram.com/cy.runliftrepeat">Instagram</a>
-
+<div id="examPage" class="page">
+  <div class="section">
+    <h2>Major Exam Upload</h2>
+    <form id="examForm">
+      <input type="text" placeholder="Exam Title" required>
+      <input type="file" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </div>
 
+<div id="viewer" class="viewer">
+  <span class="close" onclick="closeViewer()">&times;</span>
+  <img id="viewerImg" src="">
 </div>
 
-</section>
+<footer>
+  © 2026 Ceejay Ibarra
+</footer>
 
-<div id="viewer">
-<span class="close" onclick="closeViewer()">&times;</span>
-<img id="viewerImg">
-</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-
-function openViewer(src){
-document.getElementById("viewer").style.display="flex";
-document.getElementById("viewerImg").src=src;
+function showPage(pageId){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  if(pageId === 'dashboard'){ computeGrade(); }
 }
 
-function closeViewer(){
-document.getElementById("viewer").style.display="none";
-}
+function closeViewer(){ document.getElementById("viewer").style.display = "none"; }
+
 
 </script>
 
