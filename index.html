@@ -245,8 +245,37 @@ function openViewer(src){
 function closeViewer(){
   document.getElementById("viewer").style.display="none";
 }
+
+
+
+function computeBiometrics(){
+  // You can change these scores
+  let scores = [85, 90, 78, 88];
+  let total = scores.reduce((a,b)=>a+b,0);
+  let avg = Math.round(total / scores.length);
+
+  let bar = document.getElementById("progressBar");
+  let text = document.getElementById("statusText");
+
+  bar.style.width = avg + "%";
+
+  if(avg >= 75){
+    text.innerText = "PASSED (" + avg + "%)";
+    text.style.color = "green";
+  }else{
+    text.innerText = "FAILED (" + avg + "%)";
+    text.style.color = "red";
+  }
+}
+
+// run when dashboard opens
+const oldShowPage = showPage;
+showPage = function(pageId){
+  oldShowPage(pageId);
+  if(pageId === 'dashboard') computeBiometrics();
+}
+
 </script>
 
 </body>
 </html>
- final
