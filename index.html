@@ -12,26 +12,70 @@
 
 body{
 background: linear-gradient(135deg,#0f172a 0%,#1e3a8a 40%,#3b82f6 70%,#dbeafe 100%);
-min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:40px 20px;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:40px 20px;
 }
 
-nav{width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;}
+nav{
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
 nav h2{color:white;}
-nav ul{list-style:none; display:flex; gap:25px;}
-nav ul li{color:white; cursor:pointer;}
+
+nav ul{
+list-style:none;
+display:flex;
+gap:25px;
+}
+
+nav ul li{
+color:white;
+cursor:pointer;
+}
 
 .page{display:none;}
 .active{display:block;}
 
-.top-section{width:100%; max-width:1200px; text-align:center; margin-bottom:20px;}
-.top-section h1{color:white; font-size:48px; margin-bottom:20px;}
+.top-section{
+width:100%;
+max-width:1200px;
+text-align:center;
+margin-bottom:20px;
+}
+
+.top-section h1{
+color:white;
+font-size:48px;
+margin-bottom:20px;
+}
+
 .top-section span{font-weight:300;}
 
-.tags{display:flex; justify-content:center; flex-wrap:wrap; gap:15px;}
-.tag{background:white; color:#1e3a8a; padding:8px 18px; border-radius:25px; font-size:14px;}
+.tags{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.tag{
+background:white;
+color:#1e3a8a;
+padding:8px 18px;
+border-radius:25px;
+font-size:14px;
+}
 
 .card{
-width:100%; max-width:1200px;
+width:100%;
+max-width:1200px;
 background:white;
 padding:80px 35px 35px 35px;
 border-radius:25px;
@@ -44,11 +88,20 @@ margin-top:200px;
 }
 
 .profile-pic{
-width:180px; height:180px; border-radius:50%; object-fit:cover;
-position:absolute; top:-90px; border:6px solid white;
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+position:absolute;
+top:-90px;
+border:6px solid white;
 }
 
-.info{margin-bottom:12px; color:#1e3a8a;}
+.info{
+margin-bottom:12px;
+color:#1e3a8a;
+}
+
 .info span{font-weight:600;}
 
 .about{
@@ -67,34 +120,22 @@ padding:35px;
 border-radius:25px;
 box-shadow:0 20px 40px rgba(0,0,0,0.2);
 margin-bottom:35px;
-width:100%; max-width:1200px;
+width:100%;
+max-width:1200px;
 }
 
-.section h2{color:#1e3a8a; margin-bottom:20px;}
-
-.item{
-background:#eff6ff;
-padding:15px 20px;
-border-radius:20px;
-margin-bottom:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.score{
-background:#3b82f6;
-color:white;
-padding:6px 15px;
-border-radius:20px;
-cursor:pointer;
+.section h2{
+color:#1e3a8a;
+margin-bottom:20px;
 }
 
 .viewer{
 display:none;
 position:fixed;
-top:0; left:0;
-width:100%; height:100%;
+top:0;
+left:0;
+width:100%;
+height:100%;
 background:rgba(0,0,0,0.9);
 justify-content:center;
 align-items:center;
@@ -102,29 +143,61 @@ flex-direction:column;
 z-index:1000;
 }
 
-.viewer img{max-width:90%; max-height:80%; border-radius:10px;}
-.close{color:white; font-size:30px; position:absolute; top:20px; right:30px; cursor:pointer;}
-
-button{
-background:#3b82f6;
-color:white;
-padding:10px;
-border:none;
+.viewer img{
+max-width:90%;
+max-height:80%;
 border-radius:10px;
+}
+
+.close{
+color:white;
+font-size:30px;
+position:absolute;
+top:20px;
+right:30px;
 cursor:pointer;
 }
 
-form{display:flex; flex-direction:column; gap:10px;}
-
-input{
-padding:10px;
-border-radius:10px;
-border:1px solid #ccc;
+footer{
+text-align:center;
+color:white;
+margin-top:40px;
 }
 
-#imageContainer img{width:150px; border-radius:10px;}
+/* PROJECT CARDS */
+.project-grid{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+}
 
-footer{text-align:center; color:white; margin-top:40px;}
+.project-card{
+width:250px;
+padding:20px;
+border-radius:20px;
+background:#eff6ff;
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
+text-align:center;
+cursor:pointer;
+transition:0.3s;
+text-decoration:none;
+}
+
+.project-card:hover{
+transform:scale(1.05);
+box-shadow:0 15px 25px rgba(0,0,0,0.25);
+}
+
+.project-card h3{
+color:#1e3a8a;
+margin-bottom:10px;
+}
+
+.project-card p{
+color:#3b82f6;
+font-size:14px;
+}
 </style>
 </head>
 
@@ -151,32 +224,52 @@ footer{text-align:center; color:white; margin-top:40px;}
       <div class="tag">Java Programming</div>
     </div>
   </div>
+
   <div class="card">
     <img src="ceejaych/52447cf8-6fb5-4677-9de0-727862811063.jpg" class="profile-pic">
-    <h1> Mr. Pogi </h1>
+    <h1>Mr. Pogi</h1>
+
     <div class="info"><span>Name:</span> Cyrell John E. Ibarra</div>
     <div class="info"><span>Student No:</span> 251100463</div>
     <div class="info"><span>Course & Section:</span> BSCS-1D</div>
+
     <div class="about">
-     Hello! I am a CS student at Cavite State University.
-I enjoy learning about coding, especially HTML, CSS, and Java. 
-I created this portfolio to showcase my quizzes, exams, and school activities.
-I am passionate about improving my programming skills and hope to become a successful developer in the future.
+      Hello! I am a CS student at Cavite State University.
+      I enjoy learning about coding, especially HTML, CSS, and Java.
+      I created this portfolio to showcase my quizzes, exams, and school activities.
+      I am passionate about improving my programming skills and hope to become a successful developer in the future.
     </div>
   </div>
 </div>
 
 <div id="dashboard" class="page">
 <div class="section">
-<h2>Dashboard (Auto Images)</h2>
-<div id="imageContainer" style="display:flex;flex-wrap:wrap;gap:15px;">
 
-<img src="ceejaych/f9c1ab2e-a559-4ae1-89cb-c917db98897b.jpg" onclick="openViewer(this.src)">
-<img src="ceejaych/c190d281-f93a-49f0-b61b-23bf249e8080.jpg" onclick="openViewer(this.src)">
-<img src="ceejaych/5814692f-1d50-48f4-9dfe-3fb9f3eda2ed.jpg" onclick="openViewer(this.src)">
-<img src="ceejaych/ef871c65-c84f-4028-a1ce-68e56837293a.jpg" onclick="openViewer(this.src)">
+<h2>Dashboard (Auto Images)</h2>
+
+<div style="display:flex;flex-wrap:wrap;gap:15px;margin-bottom:30px;">
+  <img src="ceejaych/f9c1ab2e-a559-4ae1-89cb-c917db98897b.jpg" onclick="openViewer(this.src)" style="width:120px;border-radius:10px;">
+  <img src="ceejaych/c190d281-f93a-49f0-b61b-23bf249e8080.jpg" onclick="openViewer(this.src)" style="width:120px;border-radius:10px;">
+  <img src="ceejaych/5814692f-1d50-48f4-9dfe-3fb9f3eda2ed.jpg" onclick="openViewer(this.src)" style="width:120px;border-radius:10px;">
+  <img src="ceejaych/ef871c65-c84f-4028-a1ce-68e56837293a.jpg" onclick="openViewer(this.src)" style="width:120px;border-radius:10px;">
+</div>
+
+<h2>My Projects</h2>
+
+<div class="project-grid">
+
+<a href="https://cyrellejohnibarra-ship-it.github.io/Calculator/" target="_blank" class="project-card">
+  <h3>Calculator</h3>
+  <p>Calculator Project</p>
+</a>
+
+<a href="https://cyrellejohnibarra-ship-it.github.io/Carousel/" target="_blank" class="project-card">
+  <h3>Carousel</h3>
+  <p>Carousel Project</p>
+</a>
 
 </div>
+
 </div>
 </div>
 
@@ -189,52 +282,23 @@ I am passionate about improving my programming skills and hope to become a succe
   </div>
 </div>
 
-<div id="quizPage" class="page">
-  <div class="section">
-    <h2>Quiz Upload</h2>
-    <form id="quizForm">
-      <input type="text" placeholder="Quiz Title" required>
-      <input type="file" required>
-      <input type="file" accept="image/*" required>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-</div>
+<div id="quizPage" class="page"><div class="section"><h2>Quiz Upload</h2><form><input type="text" placeholder="Quiz Title"><input type="file"><input type="file"><button>Submit</button></form></div></div>
 
-<div id="labPage" class="page">
-  <div class="section">
-    <h2>Lab Work Upload</h2>
-    <form id="labForm">
-      <input type="text" placeholder="Title / Description" required>
-      <input type="file" required>
-      <input type="file" accept="image/*" required>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-</div>
+<div id="labPage" class="page"><div class="section"><h2>Lab Work Upload</h2><form><input type="text"><input type="file"><input type="file"><button>Submit</button></form></div></div>
 
-<div id="examPage" class="page">
-  <div class="section">
-    <h2>Major Exam Upload</h2>
-    <form id="examForm">
-      <input type="text" placeholder="Exam Title" required>
-      <input type="file" required>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-</div>
+<div id="examPage" class="page"><div class="section"><h2>Major Exam Upload</h2><form><input type="text"><input type="file"><button>Submit</button></form></div></div>
 
 <div id="viewer" class="viewer">
   <span class="close" onclick="closeViewer()">&times;</span>
-  <img id="viewerImg" src="">
+  <img id="viewerImg">
 </div>
 
 <footer>© 2026 Ceejay Ibarra</footer>
 
 <script>
-function showPage(pageId){
+function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
+  document.getElementById(id).classList.add('active');
 }
 
 function openViewer(src){
@@ -245,36 +309,6 @@ function openViewer(src){
 function closeViewer(){
   document.getElementById("viewer").style.display="none";
 }
-
-
-
-function computeBiometrics(){
-  // You can change these scores
-  let scores = [85, 90, 78, 88];
-  let total = scores.reduce((a,b)=>a+b,0);
-  let avg = Math.round(total / scores.length);
-
-  let bar = document.getElementById("progressBar");
-  let text = document.getElementById("statusText");
-
-  bar.style.width = avg + "%";
-
-  if(avg >= 75){
-    text.innerText = "PASSED (" + avg + "%)";
-    text.style.color = "green";
-  }else{
-    text.innerText = "FAILED (" + avg + "%)";
-    text.style.color = "red";
-  }
-}
-
-// run when dashboard opens
-const oldShowPage = showPage;
-showPage = function(pageId){
-  oldShowPage(pageId);
-  if(pageId === 'dashboard') computeBiometrics();
-}
-
 </script>
 
 </body>
